@@ -3,6 +3,8 @@
 
 #include "hal_data.h"
 
+extern uint32_t Timer_Period;
+
 extern volatile uint32_t dutyRate;
 extern volatile uint32_t Toggle;
 

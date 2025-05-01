@@ -3,6 +3,11 @@
 /Release/
 /build/
 
+/Debug/*.o
+/Debug/*.d
+/Debug/*.mk
+/Debug/makefile
+
 # === 오브젝트/바이너리 파일 ===
 *.o
 *.elf

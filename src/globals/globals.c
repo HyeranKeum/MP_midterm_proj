@@ -10,3 +10,5 @@ CDS_t brightness;
 uint16_t cds_data;
 
 const float ADC_CONST = (float)(3.3/4096);
+
+uint32_t Timer_Period = 0x249F00; // 20[ms] Duty Cycle (50[Hz])
