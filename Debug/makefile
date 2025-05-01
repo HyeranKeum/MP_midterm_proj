@@ -14,7 +14,6 @@ RM := rm -rf
 -include ra_gen/subdir.mk
 -include ra/fsp/src/r_ioport/subdir.mk
 -include ra/fsp/src/r_icu/subdir.mk
--include ra/fsp/src/r_gpt/subdir.mk
 -include ra/fsp/src/bsp/mcu/all/subdir.mk
 -include ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/subdir.mk
 -include subdir.mk

@@ -36,5 +36,4 @@ ra/fsp/src/r_icu \
 ra/fsp/src/r_ioport \
 ra_gen \
 src \
-ra/fsp/src/r_gpt \
 
