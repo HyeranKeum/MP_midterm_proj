@@ -10,7 +10,11 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include src/uart/subdir.mk
+-include src/irq/subdir.mk
+-include src/globals/subdir.mk
 -include src/dc/subdir.mk
+-include src/bsp_warmstart/subdir.mk
 -include src/subdir.mk
 -include ra_gen/subdir.mk
 -include ra/fsp/src/r_sci_uart/subdir.mk

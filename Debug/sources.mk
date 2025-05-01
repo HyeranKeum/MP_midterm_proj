@@ -36,6 +36,10 @@ ra/fsp/src/r_icu \
 ra/fsp/src/r_ioport \
 ra/fsp/src/r_sci_uart \
 ra_gen \
+src/bsp_warmstart \
 src/dc \
+src/globals \
 src \
+src/irq \
+src/uart \
 
