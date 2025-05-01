@@ -36,5 +36,6 @@ ra/fsp/src/r_icu \
 ra/fsp/src/r_ioport \
 ra/fsp/src/r_sci_uart \
 ra_gen \
+src/dc \
 src \
 

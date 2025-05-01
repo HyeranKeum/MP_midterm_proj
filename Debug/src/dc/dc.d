@@ -1,4 +1,4 @@
-src/hal_entry.o: ../src/hal_entry.c \
+src/dc/dc.o: ../src/dc/dc.c ../src/dc/dc.h \
  C:\Users\sarah\e2_studio\workspace\GPIO\ra_gen/hal_data.h \
  C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\api/bsp_api.h \
  C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc/fsp_common_api.h \
@@ -50,8 +50,8 @@ src/hal_entry.o: ../src/hal_entry.c \
  C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\api/r_transfer_api.h \
  C:\Users\sarah\e2_studio\workspace\GPIO\ra_cfg\fsp_cfg/r_sci_uart_cfg.h \
  C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\instances/r_icu.h \
- C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\api/r_external_irq_api.h \
- ../src/dc/dc.h
+ C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\api/r_external_irq_api.h
+../src/dc/dc.h:
 C:\Users\sarah\e2_studio\workspace\GPIO\ra_gen/hal_data.h:
 C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\api/bsp_api.h:
 C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc/fsp_common_api.h:
@@ -104,4 +104,3 @@ C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\api/r_transfer_api.h:
 C:\Users\sarah\e2_studio\workspace\GPIO\ra_cfg\fsp_cfg/r_sci_uart_cfg.h:
 C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\instances/r_icu.h:
 C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\api/r_external_irq_api.h:
-../src/dc/dc.h:
