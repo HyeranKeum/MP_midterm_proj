@@ -32,10 +32,12 @@ C_DEPS :=
 SUBDIRS := \
 ra/fsp/src/bsp/cmsis/Device/RENESAS/Source \
 ra/fsp/src/bsp/mcu/all \
+ra/fsp/src/r_adc \
 ra/fsp/src/r_icu \
 ra/fsp/src/r_ioport \
 ra/fsp/src/r_sci_uart \
 ra_gen \
+src/adc \
 src/bsp_warmstart \
 src/dc \
 src/globals \
