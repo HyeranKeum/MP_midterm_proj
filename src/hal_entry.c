@@ -1,6 +1,7 @@
 #include "hal_data.h"
 #include "globals/globals.h"
 #include "dc/dc.h"
+#include "servo/servo.h"
 #include "irq/irq.h"
 #include "uart/uart.h"
 #include "adc/adc.h"
@@ -17,6 +18,7 @@ void hal_entry(void)
 {
     IRQ_Setting();
     DC_initial(); // 반시계방향 속도 0
+    servo_initial();
 
     // ADC
     R_ADC_Open(&g_adc0_ctrl, &g_adc0_cfg);

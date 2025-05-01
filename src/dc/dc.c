@@ -1,11 +1,12 @@
 #include "dc.h"
+#include "../globals/globals.h"
 #include "hal_data.h"
+
 //DC
 bsp_io_port_pin_t L293_CH0_Enable = BSP_IO_PORT_09_PIN_00;
 bsp_io_port_pin_t L293_CH0_Direction = BSP_IO_PORT_09_PIN_01;
 uint8_t L293_CH0_Enable_Level = BSP_IO_LEVEL_HIGH;
 uint8_t L293_CH0_Direction_Level;
-uint32_t Timer_Period = 0x249F00; // 20[ms] Duty Cycle (50[Hz])
 
 void DC_initial(){
     R_MSTP->MSTPCRD_b.MSTPD5 = 0U; // GPT32EH3 Module Stop State Cancel
