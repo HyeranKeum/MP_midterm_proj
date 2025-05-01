@@ -13,4 +13,6 @@ Renesas\#\#HAL\ Drivers\#\#all\#\#r_icu\#\#\#\#3.5.0/all=1906465970,ra/fsp/inc/a
 Renesas\#\#HAL\ Drivers\#\#all\#\#r_icu\#\#\#\#3.5.0/libraries=
 Renesas\#\#HAL\ Drivers\#\#all\#\#r_ioport\#\#\#\#3.5.0/all=1939984091,ra/fsp/inc/api/r_ioport_api.h|3254285722,ra/fsp/src/r_ioport/r_ioport.c|2208590403,ra/fsp/inc/instances/r_ioport.h
 Renesas\#\#HAL\ Drivers\#\#all\#\#r_ioport\#\#\#\#3.5.0/libraries=
+Renesas\#\#HAL\ Drivers\#\#all\#\#r_sci_uart\#\#\#\#3.5.0/all=1889256766,ra/fsp/inc/instances/r_sci_uart.h|3916852077,ra/fsp/inc/api/r_uart_api.h|3094200246,ra/fsp/src/r_sci_uart/r_sci_uart.c|1610456547,ra/fsp/inc/api/r_transfer_api.h
+Renesas\#\#HAL\ Drivers\#\#all\#\#r_sci_uart\#\#\#\#3.5.0/libraries=
 eclipse.preferences.version=1

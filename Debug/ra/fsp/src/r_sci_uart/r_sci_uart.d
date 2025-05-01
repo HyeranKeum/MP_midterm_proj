@@ -1,5 +1,4 @@
-src/hal_entry.o: ../src/hal_entry.c \
- C:\Users\sarah\e2_studio\workspace\GPIO\ra_gen/hal_data.h \
+ra/fsp/src/r_sci_uart/r_sci_uart.o: ../ra/fsp/src/r_sci_uart/r_sci_uart.c \
  C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\api/bsp_api.h \
  C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc/fsp_common_api.h \
  C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc/fsp_version.h \
@@ -39,19 +38,11 @@ src/hal_entry.o: ../src/hal_entry.c \
  c:\users\sarah\e2_studio\workspace\gpio\ra\fsp\src\bsp\mcu\all\bsp_compiler_support.h \
  c:\users\sarah\e2_studio\workspace\gpio\ra\fsp\src\bsp\mcu\all\bsp_delay.h \
  c:\users\sarah\e2_studio\workspace\gpio\ra\fsp\src\bsp\mcu\all\bsp_mcu_api.h \
- C:\Users\sarah\e2_studio\workspace\GPIO\ra_gen/common_data.h \
- C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\instances/r_ioport.h \
- C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\api/r_ioport_api.h \
- C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\api/bsp_api.h \
- C:\Users\sarah\e2_studio\workspace\GPIO\ra_cfg\fsp_cfg/r_ioport_cfg.h \
- C:\Users\sarah\e2_studio\workspace\GPIO\ra_cfg\fsp_cfg\bsp/bsp_pin_cfg.h \
  C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\instances/r_sci_uart.h \
  C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\api/r_uart_api.h \
+ C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\api/bsp_api.h \
  C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\api/r_transfer_api.h \
- C:\Users\sarah\e2_studio\workspace\GPIO\ra_cfg\fsp_cfg/r_sci_uart_cfg.h \
- C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\instances/r_icu.h \
- C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\api/r_external_irq_api.h
-C:\Users\sarah\e2_studio\workspace\GPIO\ra_gen/hal_data.h:
+ C:\Users\sarah\e2_studio\workspace\GPIO\ra_cfg\fsp_cfg/r_sci_uart_cfg.h
 C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\api/bsp_api.h:
 C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc/fsp_common_api.h:
 C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc/fsp_version.h:
@@ -91,15 +82,8 @@ c:\users\sarah\e2_studio\workspace\gpio\ra\fsp\inc\fsp_common_api.h:
 c:\users\sarah\e2_studio\workspace\gpio\ra\fsp\src\bsp\mcu\all\bsp_compiler_support.h:
 c:\users\sarah\e2_studio\workspace\gpio\ra\fsp\src\bsp\mcu\all\bsp_delay.h:
 c:\users\sarah\e2_studio\workspace\gpio\ra\fsp\src\bsp\mcu\all\bsp_mcu_api.h:
-C:\Users\sarah\e2_studio\workspace\GPIO\ra_gen/common_data.h:
-C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\instances/r_ioport.h:
-C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\api/r_ioport_api.h:
-C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\api/bsp_api.h:
-C:\Users\sarah\e2_studio\workspace\GPIO\ra_cfg\fsp_cfg/r_ioport_cfg.h:
-C:\Users\sarah\e2_studio\workspace\GPIO\ra_cfg\fsp_cfg\bsp/bsp_pin_cfg.h:
 C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\instances/r_sci_uart.h:
 C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\api/r_uart_api.h:
+C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\api/bsp_api.h:
 C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\api/r_transfer_api.h:
 C:\Users\sarah\e2_studio\workspace\GPIO\ra_cfg\fsp_cfg/r_sci_uart_cfg.h:
-C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\instances/r_icu.h:
-C:\Users\sarah\e2_studio\workspace\GPIO\ra\fsp\inc\api/r_external_irq_api.h:
