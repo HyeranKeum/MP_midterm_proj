@@ -1,6 +1,7 @@
 #include "hal_data.h"
-#include "../dc/dc.h"
 #include "../globals/globals.h"
+#include "../dc/dc.h"
+#include "../servo/servo.h"
 #include "irq.h"
 
 void IRQ_Setting() {
@@ -33,11 +34,17 @@ void R_IRQ_Interrupt(external_irq_callback_args_t *p_args)
             break;
         }
         case 13: {
-            R_GPT3->GTCCR[0] = 0;
+            if(degree != 180)
+                degree += 10;
+
+            Rotate_Servo();
             break;
         }
         case 14: {
-            R_GPT3->GTCCR[0] = Timer_Period;
+            if(degree != 0)
+                degree -= 10;
+
+            Rotate_Servo();
             break;
         }
     }
