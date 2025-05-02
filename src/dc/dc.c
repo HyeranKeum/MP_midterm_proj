@@ -1,5 +1,6 @@
 #include "dc.h"
 #include "../globals/globals.h"
+#include "../adc/adc.h"
 #include "hal_data.h"
 
 //DC

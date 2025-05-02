@@ -9,17 +9,13 @@ extern volatile uint32_t Toggle;
 
 extern volatile uint32_t count;
 
-extern uint16_t potentiometer_mV;
-extern uint16_t potentiometer_Ra;
-extern uint16_t potentiometer_Rb;
-extern uint16_t cds_data;
-
 typedef enum {
-    CDS_light = 0,
-    CDS_dark = 1,
-}CDS_t;
+    P = 0,
+    N = 1,
+    D = 2,
+    R = 3
+}Lever_mode;
 
-extern CDS_t brightness;
+extern volatile Lever_mode lever_mode;
 
-extern const float ADC_CONST;
 #endif 

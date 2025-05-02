@@ -2,6 +2,12 @@
 #include "adc.h"
 #include "../globals/globals.h"
 
+uint16_t potentiometer_mV = 0, potentiometer_Ra = 0, potentiometer_Rb = 0;
+CDS_t brightness;
+uint16_t cds_data;
+
+const float ADC_CONST = (float)(3.3/4096);
+
 void Potentiometer_Read()
 {
     uint16_t ch0_adc_result;
