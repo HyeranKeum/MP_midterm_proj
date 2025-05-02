@@ -31,9 +31,14 @@ void hal_entry(void)
             }
         }
         ADC_Read_and_Convert();
+
+        // 기어 변경(수동일 때만 수행)
+        set_gear();
+
         calc_degree();
-        calc_dutyRate();
         Rotate_Servo();
+
+        calc_dutyRate();
         Rotate_DC();
         
         // message[0] = (char) Cnt;
