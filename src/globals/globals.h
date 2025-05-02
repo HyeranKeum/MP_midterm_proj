@@ -39,6 +39,8 @@ extern const Gear gear_4;
 
 extern uint8_t percent_ptio;
 
+extern volatile bool Error;
+
 void initial_setting();
 
 void LED_inital();
@@ -53,4 +55,6 @@ void lever_R_init();
 void mode_init();
 
 void set_gear();
+
+void detect_error();
 #endif 

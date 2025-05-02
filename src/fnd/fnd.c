@@ -31,10 +31,10 @@ uint8_t fnd4[2] = {
     0x86   // E
 };
 void FND_initial() {
-    print_data[0] = fnd1[(f1)];
-    print_data[1] = fnd2[(f2)];
-    print_data[2] = fnd3[(f3)];
-    print_data[3] = fnd4[(f4)];
+    print_data[0] = fnd1[0];
+    print_data[1] = fnd2[0];
+    print_data[2] = fnd3[0];
+    print_data[3] = fnd4[0];
     R_FND_Reset();
 }
 

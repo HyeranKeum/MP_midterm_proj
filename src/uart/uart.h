@@ -9,6 +9,6 @@
 
 extern char tail[2];
 
-void user_uart_callback();
-void user_uart_write();
+void user_uart_callback(uart_callback_args_t *p_args);
+void user_uart_write(const char *msg, uint32_t const bytes);
 #endif
