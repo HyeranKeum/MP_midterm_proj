@@ -56,7 +56,7 @@ void system_on(){
 void lever_P_init(){
     current_lever = P;
     DC_initial(); // 시계방향, disable
-    servo_initial(); // degree 0, count stop
+    servo_initial(); // degree 0, disable
 }
 
 void lever_N_init(){
@@ -67,7 +67,7 @@ void lever_N_init(){
 void lever_D_init(){
     current_lever = D;
     R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_08, BSP_IO_LEVEL_LOW); // PA08
-    // R_GPT3->GTCR_b.CST = 1U; // DC Start
+
     R_GPT3->GTCR_b.CST = 1U;
     L293_CH0_Enable_Level = BSP_IO_LEVEL_HIGH;
     R_IOPORT_PinWrite(&g_ioport_ctrl, L293_CH0_Enable, L293_CH0_Enable_Level);
@@ -82,18 +82,16 @@ void lever_R_init(){
     R_IOPORT_PinWrite(&g_ioport_ctrl, L293_CH0_Direction, L293_CH0_Direction_Level);
 }
 
-void mode_init(){ // auto(current_mode = 0) <-> manual(current_mode = 1) 토글 시 
+void mode_init(){ // auto(current_mode = 0) <-> manual(current_mode = 1) 토글
     R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_09, current_mode); // PA09
 }
 
 void set_gear(){
-    if (current_mode == Manual) {
-        return;
-    }
 
     if (current_lever == P) {
         current_gear = gear_0;
-    } else {
+    }
+    else if (current_mode == Auto) {
         percent_ptio = (uint8_t) (potentiometer_Ra / 100);
 
         if (percent_ptio < 20) {
@@ -106,7 +104,6 @@ void set_gear(){
             current_gear = gear_4;
         }
     }
-
     print_data[2] = fnd3[current_gear.gear];
 }
 
