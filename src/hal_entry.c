@@ -6,9 +6,8 @@
 #include "uart/uart.h"
 #include "adc/adc.h"
 #include "fnd/fnd.h"
+#include "agt/agt.h"
 #include "bsp_warmstart/bsp.h"
-
-char message[5];
 
 int cnt = 0;
 int Cnt = 65;
@@ -31,13 +30,16 @@ void hal_entry(void)
             }
         }
         ADC_Read_and_Convert();
+
+        // 기어 변경(수동일 때만 수행)
+        set_gear();
+        detect_error();
+
         calc_degree();
-        calc_dutyRate();
         Rotate_Servo();
+
+        calc_dutyRate();
         Rotate_DC();
-        
-        // message[0] = (char) Cnt;
-        // user_uart_write(message, strlen(message));
 
         R_FND_Print_Data(print_data);
     }

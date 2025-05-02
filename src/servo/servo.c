@@ -28,14 +28,14 @@ void servo_initial()
     R_GPT0->GTCR_b.CST = 0U; // GPT32EH0 Count Start
 }
 
+void calc_degree()
+{
+    degree = (uint8_t)(((float)potentiometer_Ra/10000.0f)*180.f);
+}
+
 void Rotate_Servo()
 {
     temp_calc = (SERVO_MINIMUM_DUTY + SERVO_EACH_DEGREE * (float)degree);
 
     R_GPT0->GTCCR[0] = (uint32_t)(Timer_Period * temp_calc);
-}
-
-void calc_degree()
-{
-    degree = (uint8_t)(((float)potentiometer_Ra/10000.0f)*180.f);
 }

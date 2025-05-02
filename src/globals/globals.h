@@ -23,6 +23,24 @@ typedef enum {
 } Mode;
 extern volatile Mode current_mode;
 
+typedef struct {
+    uint8_t gear;
+    char display_char;
+    uint8_t duty_low;
+    uint8_t duty_high;
+} Gear;
+extern volatile Gear current_gear;
+
+extern const Gear gear_0; // 모드P일 때
+extern const Gear gear_1;
+extern const Gear gear_2;
+extern const Gear gear_3;
+extern const Gear gear_4;
+
+extern uint8_t percent_ptio;
+
+extern volatile bool Error;
+
 void initial_setting();
 
 void LED_inital();
@@ -35,5 +53,9 @@ void lever_D_init();
 void lever_R_init();
 
 void mode_init();
+
+void set_gear();
+
+void detect_error();
 
 #endif 
