@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "hal_data.h": "c",
-        "uart.h": "c"
+        "uart.h": "c",
+        "bsp.h": "c"
     }
 }
