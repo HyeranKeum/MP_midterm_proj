@@ -5,7 +5,6 @@
 
 extern uint32_t Timer_Period;
 
-extern volatile uint32_t dutyRate;
 extern volatile uint32_t Toggle;
 
 extern volatile uint32_t count;
