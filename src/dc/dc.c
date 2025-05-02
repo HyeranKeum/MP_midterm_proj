@@ -27,7 +27,7 @@ void DC_initial(){
 
     R_GPT3->GTCCR[0] = (uint32_t)0; // GTCCR Initial Setting (Angle = 0[degree])
 
-    R_GPT3->GTCR_b.CST = 1U;
+    R_GPT3->GTCR_b.CST = 0U;
 
     R_IOPORT_PinWrite(&g_ioport_ctrl, L293_CH0_Enable, L293_CH0_Enable_Level);
 }

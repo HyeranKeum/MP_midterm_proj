@@ -25,7 +25,7 @@ void servo_initial()
 
     R_GPT0->GTCCR[0] = (uint32_t)(Timer_Period * SERVO_MINIMUM_DUTY); // GTCCR Initial Setting (Angle = 0[degree])
 
-    R_GPT0->GTCR_b.CST = 1U; // GPT32EH0 Count Start
+    R_GPT0->GTCR_b.CST = 0U; // GPT32EH0 Count Start
 }
 
 void Rotate_Servo()

@@ -24,8 +24,26 @@ void R_IRQ_Interrupt(external_irq_callback_args_t *p_args)
 
     switch (switch_channel) {
         case 11:{
-            f1 += 1;
-            print_data[0] = fnd1[(f1)%4];
+            current_lever += 1;
+            if (current_lever == 4){
+                current_lever = 0;
+            }
+            switch (current_lever) {
+                case 0:
+                    lever_P_init();
+                    break;
+                case 1:
+                    lever_N_init();
+                    break;
+                case 2:
+                    lever_D_init();
+                    break;    
+                case 3:
+                    lever_R_init();
+                    break;
+            }
+            
+            print_data[0] = fnd1[current_lever];
             break;
         }
         case 12: {

@@ -16,6 +16,11 @@ typedef enum {
     R = 3
 }Lever_mode;
 
-extern volatile Lever_mode lever_mode;
+extern volatile Lever_mode current_lever;
+
+void lever_P_init();
+void lever_N_init();
+void lever_D_init();
+void lever_R_init();
 
 #endif 
