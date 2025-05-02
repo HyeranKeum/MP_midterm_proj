@@ -9,12 +9,30 @@ volatile uint32_t count = 0;
 uint32_t Timer_Period = 0x249F00; // 20[ms] Duty Cycle (50[Hz])
 
 volatile Lever_mode current_lever = 0;
+volatile Mode current_mode = 0;
+
+void initial_setting() {
+    LED_inital();
+    IRQ_Setting();
+    DC_initial(); // 반시계방향 disable
+    servo_initial();
+    ADC_initial();
+
+    R_SCI_UART_Open(&g_uart0_ctrl, &g_uart0_cfg);
+
+    FND_initial();
+}
 
 void LED_inital() {
     R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_08, BSP_IO_LEVEL_HIGH); // PA08
     R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_09, BSP_IO_LEVEL_HIGH); // PA09
     R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_10, BSP_IO_LEVEL_HIGH); // PA10
     R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_11_PIN_00, BSP_IO_LEVEL_HIGH); // PB00
+}
+
+void system_on(){
+    lever_P_init();
+    mode_init();
 }
 
 void lever_P_init(){
@@ -37,4 +55,8 @@ void lever_D_init(){
 void lever_R_init(){
     R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_08, BSP_IO_LEVEL_HIGH); // PA08
     current_lever = R;
+}
+
+void mode_init(){
+    R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_09, current_mode); // PA09
 }

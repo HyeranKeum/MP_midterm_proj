@@ -15,12 +15,25 @@ typedef enum {
     D = 2,
     R = 3
 }Lever_mode;
-
 extern volatile Lever_mode current_lever;
+
+typedef enum {
+    Auto = 0,
+    Manual
+} Mode;
+extern volatile Mode current_mode;
+
+void initial_setting();
+
 void LED_inital();
+
+void system_on();
+
 void lever_P_init();
 void lever_N_init();
 void lever_D_init();
 void lever_R_init();
+
+void mode_init();
 
 #endif 

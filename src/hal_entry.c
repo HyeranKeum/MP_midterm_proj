@@ -17,15 +17,9 @@ uint16_t p_RA;
 uint16_t cds_sensor;
 void hal_entry(void)
 {
-    LED_inital();
-    IRQ_Setting();
-    DC_initial(); // 반시계방향 disable
-    servo_initial();
-    ADC_initial();
+    initial_setting();
 
-    R_SCI_UART_Open(&g_uart0_ctrl, &g_uart0_cfg);
-
-    FND_initial();
+    system_on();
 
     while(1) {
         cnt += 1;

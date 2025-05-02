@@ -47,8 +47,9 @@ void R_IRQ_Interrupt(external_irq_callback_args_t *p_args)
             break;
         }
         case 12: {
-            f2 += 1;
-            print_data[1] = fnd2[(f2)%2];
+            current_mode ^= 0x01; // 모드 토글
+            mode_init();
+            print_data[1] = fnd2[current_mode];
             break;
         }
         case 13: {
