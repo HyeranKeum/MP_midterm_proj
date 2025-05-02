@@ -8,5 +8,7 @@ extern uint8_t L293_CH0_Enable_Level;
 extern uint8_t L293_CH0_Direction_Level;
 
 void DC_initial();
+void calc_dutyRate();
+void Rotate_DC();
 
 #endif

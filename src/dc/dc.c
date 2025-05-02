@@ -29,3 +29,12 @@ void DC_initial(){
 
     R_IOPORT_PinWrite(&g_ioport_ctrl, L293_CH0_Enable, L293_CH0_Enable_Level);
 }
+
+void calc_dutyRate() {
+    dutyRate = (uint8_t)(((float)potentiometer_Ra/10000.0f)*100.f);
+}
+
+void Rotate_DC()
+{
+    R_GPT3->GTCCR[0] = Timer_Period * dutyRate / 100;
+}

@@ -45,7 +45,9 @@ void hal_entry(void)
         }
         ADC_Read_and_Convert();
         calc_degree();
+        calc_dutyRate();
         Rotate_Servo();
+        Rotate_DC();
         
         // message[0] = (char) Cnt;
         // user_uart_write(message, strlen(message));
