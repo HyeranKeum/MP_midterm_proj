@@ -44,6 +44,8 @@ void hal_entry(void)
             }
         }
         ADC_Read_and_Convert();
+        calc_degree();
+        Rotate_Servo();
         
         // message[0] = (char) Cnt;
         // user_uart_write(message, strlen(message));

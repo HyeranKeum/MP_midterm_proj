@@ -1,5 +1,6 @@
 #include "hal_data.h"
 #include "servo.h"
+#include "../adc/adc.h"
 #include "../globals/globals.h" // timerperiod
 
 const double SERVO_MINIMUM_DUTY = 0.03;
@@ -32,4 +33,9 @@ void Rotate_Servo()
     temp_calc = (SERVO_MINIMUM_DUTY + SERVO_EACH_DEGREE * (float)degree);
 
     R_GPT0->GTCCR[0] = (uint32_t)(Timer_Period * temp_calc);
+}
+
+void calc_degree()
+{
+    degree = (uint8_t)(((float)potentiometer_Ra/10000.0f)*180.f);
 }
