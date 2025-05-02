@@ -33,4 +33,6 @@ extern void R_FND_Display_Data(uint8_t digit, uint8_t data);
 
 extern void FND_initial();
 
+extern void fnd_print_state();
+
 #endif 

@@ -41,7 +41,7 @@ void hal_entry(void)
         calc_dutyRate();
         Rotate_DC();
 
-        R_FND_Print_Data(print_data);
+        fnd_print_state();
     }
 
 

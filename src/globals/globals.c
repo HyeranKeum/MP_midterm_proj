@@ -115,5 +115,4 @@ void detect_error() {
     } else {
         Error = false;
     }
-    print_data[3] = fnd4[Error];
 }

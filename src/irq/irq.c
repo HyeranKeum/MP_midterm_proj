@@ -45,13 +45,11 @@ void R_IRQ_Interrupt(external_irq_callback_args_t *p_args)
                     break;
             }
             
-            print_data[0] = fnd1[current_lever];
             break;
         }
         case 12: {
             current_mode ^= 0x01; // 모드 토글
             mode_init();
-            print_data[1] = fnd2[current_mode];
             break;
         }
         case 13: { // gear up
@@ -59,7 +57,6 @@ void R_IRQ_Interrupt(external_irq_callback_args_t *p_args)
                 return;
             }
             current_gear = gear_list[current_gear.gear + 1];
-            print_data[2] = fnd3[current_gear.gear];
             break;
         }
         case 14: {
@@ -67,7 +64,6 @@ void R_IRQ_Interrupt(external_irq_callback_args_t *p_args)
                 return;
             }
             current_gear = gear_list[current_gear.gear - 1];
-            print_data[2] = fnd3[current_gear.gear];
             break;
         }
     }

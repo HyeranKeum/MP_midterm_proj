@@ -1,4 +1,5 @@
 #include "hal_data.h"
+#include "../globals/globals.h"
 #include "fnd.h"
 
 uint8_t number[10] = {0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xD8, 0x80, 0x90};
@@ -15,7 +16,7 @@ uint8_t fnd1[4] = {
 
 uint8_t fnd2[2] = {
     0x88,  // A
-    0x83   // B
+    0x83   // b
 };
 
 uint8_t fnd3[5] = {
@@ -27,7 +28,7 @@ uint8_t fnd3[5] = {
 };
 
 uint8_t fnd4[2] = {
-    0xFF,  // 정상 (표시 없음)
+    0xFF,  // (표시 없음)
     0x86   // E
 };
 void FND_initial() {
@@ -70,4 +71,12 @@ void R_FND_Display_Data(uint8_t digit, uint8_t data)
     /* 7-Segment LED Pin State Setting */
     R_PORT6->PCNTR1_b.PODR = (uint16_t)(((data & 0xf0) << 7U) | ((data & 0x0f) << 4U));
 
+}
+
+void fnd_print_state(){
+    print_data[0] = fnd1[current_lever];
+    print_data[1] = fnd2[current_mode];
+    print_data[2] = fnd3[current_gear.gear];
+    print_data[3] = fnd4[Error];
+    R_FND_Print_Data(print_data);
 }
