@@ -5,6 +5,7 @@
 #include "irq/irq.h"
 #include "uart/uart.h"
 #include "adc/adc.h"
+#include "fnd/fnd.h"
 #include "bsp_warmstart/bsp.h"
 
 char message[5];
@@ -26,6 +27,8 @@ void hal_entry(void)
 
     R_SCI_UART_Open(&g_uart0_ctrl, &g_uart0_cfg);
 
+    FND_initial();
+
     R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_08, BSP_IO_LEVEL_LOW); // PA08
     R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_09, BSP_IO_LEVEL_LOW); // PA09
     R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_10, BSP_IO_LEVEL_LOW); // PA10
@@ -42,8 +45,10 @@ void hal_entry(void)
         }
         ADC_Read_and_Convert();
         
-        message[0] = (char) Cnt;
-        user_uart_write(message, strlen(message));
+        // message[0] = (char) Cnt;
+        // user_uart_write(message, strlen(message));
+
+        R_FND_Print_Data(print_data);
     }
 
 

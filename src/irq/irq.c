@@ -2,6 +2,7 @@
 #include "../globals/globals.h"
 #include "../dc/dc.h"
 #include "../servo/servo.h"
+#include "../fnd/fnd.h"
 #include "irq.h"
 
 void IRQ_Setting() {
@@ -23,28 +24,23 @@ void R_IRQ_Interrupt(external_irq_callback_args_t *p_args)
 
     switch (switch_channel) {
         case 11:{
-            Toggle += 1;
-            L293_CH0_Direction_Level = BSP_IO_LEVEL_HIGH; // 시계방향
-            R_IOPORT_PinWrite(&g_ioport_ctrl, L293_CH0_Direction, L293_CH0_Direction_Level);
+            f1 += 1;
+            print_data[0] = fnd1[(f1)%4];
             break;
         }
         case 12: {
-            L293_CH0_Direction_Level = BSP_IO_LEVEL_LOW; // 반시계방향
-            R_IOPORT_PinWrite(&g_ioport_ctrl, L293_CH0_Direction, L293_CH0_Direction_Level);
+            f2 += 1;
+            print_data[1] = fnd2[(f2)%2];
             break;
         }
         case 13: {
-            if(degree != 180)
-                degree += 10;
-
-            Rotate_Servo();
+            f3 += 1;
+            print_data[2] = fnd3[(f3)%5];
             break;
         }
         case 14: {
-            if(degree != 0)
-                degree -= 10;
-
-            Rotate_Servo();
+            f4 += 1;
+            print_data[3] = fnd4[(f4)%2];
             break;
         }
     }
