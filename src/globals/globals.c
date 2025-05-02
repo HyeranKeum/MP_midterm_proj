@@ -1,6 +1,9 @@
 #include "hal_data.h"
 #include "globals.h"
 #include "dc/dc.h"
+#include "irq/irq.h"
+#include "fnd/fnd.h"
+#include "adc/adc.h"
 #include "servo/servo.h"
 
 volatile uint32_t Toggle   = 0;
@@ -37,8 +40,8 @@ void system_on(){
 
 void lever_P_init(){
     current_lever = P;
-    DC_initial(); // (debug)시계반대방향, count stop
-    servo_initial(); // dutyRate 0, count stop
+    DC_initial(); // 시계방향, disable
+    servo_initial(); // degree 0, count stop
 }
 
 void lever_N_init(){
@@ -49,14 +52,21 @@ void lever_N_init(){
 void lever_D_init(){
     current_lever = D;
     R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_08, BSP_IO_LEVEL_LOW); // PA08
-    R_GPT3->GTCR_b.CST = 1U; // DC Start
+    // R_GPT3->GTCR_b.CST = 1U; // DC Start
+    R_GPT3->GTCR_b.CST = 1U;
+    L293_CH0_Enable_Level = BSP_IO_LEVEL_HIGH;
+    R_IOPORT_PinWrite(&g_ioport_ctrl, L293_CH0_Enable, L293_CH0_Enable_Level);
+
 }
 
 void lever_R_init(){
-    R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_08, BSP_IO_LEVEL_HIGH); // PA08
     current_lever = R;
+    R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_08, BSP_IO_LEVEL_HIGH); // PA08
+
+    L293_CH0_Direction_Level = BSP_IO_LEVEL_LOW; // 반시계방향
+    R_IOPORT_PinWrite(&g_ioport_ctrl, L293_CH0_Direction, L293_CH0_Direction_Level);
 }
 
-void mode_init(){
+void mode_init(){ // auto(current_mode = 0) <-> manual(current_mode = 1) 토글 시 
     R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_09, current_mode); // PA09
 }
