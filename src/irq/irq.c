@@ -24,13 +24,32 @@ void R_IRQ_Interrupt(external_irq_callback_args_t *p_args)
 
     switch (switch_channel) {
         case 11:{
-            f1 += 1;
-            print_data[0] = fnd1[(f1)%4];
+            current_lever += 1;
+            if (current_lever == 4){
+                current_lever = 0;
+            }
+            switch (current_lever) {
+                case 0:
+                    lever_P_init();
+                    break;
+                case 1:
+                    lever_N_init();
+                    break;
+                case 2:
+                    lever_D_init();
+                    break;    
+                case 3:
+                    lever_R_init();
+                    break;
+            }
+            
+            print_data[0] = fnd1[current_lever];
             break;
         }
         case 12: {
-            f2 += 1;
-            print_data[1] = fnd2[(f2)%2];
+            current_mode ^= 0x01; // 모드 토글
+            mode_init();
+            print_data[1] = fnd2[current_mode];
             break;
         }
         case 13: {

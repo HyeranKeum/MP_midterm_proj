@@ -1,12 +1,15 @@
 #include "dc.h"
 #include "../globals/globals.h"
+#include "../adc/adc.h"
 #include "hal_data.h"
 
 //DC
 bsp_io_port_pin_t L293_CH0_Enable = BSP_IO_PORT_09_PIN_00;
 bsp_io_port_pin_t L293_CH0_Direction = BSP_IO_PORT_09_PIN_01;
-uint8_t L293_CH0_Enable_Level = BSP_IO_LEVEL_HIGH;
+uint8_t L293_CH0_Enable_Level = BSP_IO_LEVEL_LOW;
 uint8_t L293_CH0_Direction_Level;
+volatile uint32_t dutyRate = 0;
+uint32_t tmp_dutyRate = 0;
 
 void DC_initial(){
     R_MSTP->MSTPCRD_b.MSTPD5 = 0U; // GPT32EH3 Module Stop State Cancel
@@ -20,18 +23,25 @@ void DC_initial(){
     R_GPT3->GTIOR_b.GTIOA = 9U; // Compare Matching Output Control Setting
     R_GPT3->GTIOR_b.OAE = 1U; // GPIOCA Output Pin Enable
 
-    L293_CH0_Direction_Level = BSP_IO_LEVEL_LOW; // 반시계방향
+    L293_CH0_Direction_Level = BSP_IO_LEVEL_HIGH; // 시계방향
     R_IOPORT_PinWrite(&g_ioport_ctrl, L293_CH0_Direction, L293_CH0_Direction_Level);
 
-    R_GPT3->GTCCR[0] = (uint32_t)0; // GTCCR Initial Setting (Angle = 0[degree])
+    R_GPT3->GTCCR[0] = Timer_Period; // GTCCR Initial Setting (Angle = 0[degree])
 
-    R_GPT3->GTCR_b.CST = 1U;
-
+    R_GPT3->GTCR_b.CST = 0U;
+    
+    L293_CH0_Enable_Level = BSP_IO_LEVEL_LOW;
     R_IOPORT_PinWrite(&g_ioport_ctrl, L293_CH0_Enable, L293_CH0_Enable_Level);
 }
 
 void calc_dutyRate() {
-    dutyRate = (uint8_t)(((float)potentiometer_Ra/10000.0f)*100.f);
+    tmp_dutyRate = (uint8_t)(((float)potentiometer_Ra/10000.0f)*100.f);
+    if (current_lever == D){
+        dutyRate = 100 - tmp_dutyRate;
+        return;
+    }
+    dutyRate = tmp_dutyRate;
+    
 }
 
 void Rotate_DC()

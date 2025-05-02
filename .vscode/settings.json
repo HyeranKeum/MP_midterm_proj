@@ -2,6 +2,10 @@
     "files.associations": {
         "hal_data.h": "c",
         "uart.h": "c",
-        "bsp.h": "c"
+        "bsp.h": "c",
+        "globals.h": "c",
+        "adc.h": "c",
+        "irq.h": "c",
+        "fnd.h": "c"
     }
 }

@@ -17,22 +17,9 @@ uint16_t p_RA;
 uint16_t cds_sensor;
 void hal_entry(void)
 {
-    IRQ_Setting();
-    DC_initial(); // 반시계방향 속도 0
-    servo_initial();
+    initial_setting();
 
-    // ADC
-    R_ADC_Open(&g_adc0_ctrl, &g_adc0_cfg);
-    R_ADC_ScanCfg(&g_adc0_ctrl, &g_adc0_channel_cfg);
-
-    R_SCI_UART_Open(&g_uart0_ctrl, &g_uart0_cfg);
-
-    FND_initial();
-
-    R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_08, BSP_IO_LEVEL_LOW); // PA08
-    R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_09, BSP_IO_LEVEL_LOW); // PA09
-    R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_10, BSP_IO_LEVEL_LOW); // PA10
-    R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_11_PIN_00, BSP_IO_LEVEL_LOW); // PB00
+    system_on();
 
     while(1) {
         cnt += 1;
