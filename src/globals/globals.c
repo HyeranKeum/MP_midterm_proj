@@ -118,4 +118,3 @@ void detect_error() {
     }
     print_data[3] = fnd4[Error];
 }
-
