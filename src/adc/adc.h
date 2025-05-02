@@ -17,6 +17,7 @@ extern CDS_t brightness;
 
 extern const float ADC_CONST;
 
+void ADC_initial();
 void Potentiometer_Read();
 void Cds_Sensor_Read();
 void ADC_Read_and_Convert(void);

@@ -17,7 +17,7 @@ typedef enum {
 }Lever_mode;
 
 extern volatile Lever_mode current_lever;
-
+void LED_inital();
 void lever_P_init();
 void lever_N_init();
 void lever_D_init();
