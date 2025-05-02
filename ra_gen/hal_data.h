@@ -4,6 +4,8 @@
 #include <stdint.h>
 #include "bsp_api.h"
 #include "common_data.h"
+#include "r_agt.h"
+#include "r_timer_api.h"
 #include "r_adc.h"
 #include "r_adc_api.h"
 #include "r_sci_uart.h"
@@ -11,6 +13,16 @@
 #include "r_icu.h"
 #include "r_external_irq_api.h"
 FSP_HEADER
+/** AGT Timer Instance */
+extern const timer_instance_t Error_timer;
+
+/** Access the AGT instance using these structures when calling API functions directly (::p_api is not used). */
+extern agt_instance_ctrl_t Error_timer_ctrl;
+extern const timer_cfg_t Error_timer_cfg;
+
+#ifndef R_AGT0_Interrupt
+void R_AGT0_Interrupt(timer_callback_args_t *p_args);
+#endif
 /** ADC on ADC Instance. */
 extern const adc_instance_t g_adc0;
 
