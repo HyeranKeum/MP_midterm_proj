@@ -5,7 +5,7 @@
 #include "../fnd/fnd.h"
 #include "irq.h"
 
-// Gear gear_list[5] = {gear_0, gear_1, gear_2, gear_3, gear_4}
+// Gear gear_list[5] = {gear_0, gear_1, gear_2, gear_3, gear_4};
 
 void IRQ_Setting() {
     R_ICU_ExternalIrqOpen(&g_external_irq11_ctrl, &g_external_irq11_cfg);
@@ -58,7 +58,7 @@ void R_IRQ_Interrupt(external_irq_callback_args_t *p_args)
             if ((current_mode == Auto) || (current_gear.gear == 4)){
                 return;
             }
-            current_gear.gear += 1;
+            current_gear = gear_list[current_gear.gear + 1];
             print_data[2] = fnd3[current_gear.gear];
             break;
         }
@@ -66,7 +66,7 @@ void R_IRQ_Interrupt(external_irq_callback_args_t *p_args)
             if ((current_mode == Auto) || (current_gear.gear == 1)){
                 return;
             }
-            current_gear.gear -= 1;
+            current_gear = gear_list[current_gear.gear - 1];
             print_data[2] = fnd3[current_gear.gear];
             break;
         }

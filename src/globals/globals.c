@@ -20,6 +20,8 @@ const Gear gear_2 = {2, '2' ,20, 50};
 const Gear gear_3 = {3, '3' ,50, 80};
 const Gear gear_4 = {4, '4' ,80, 100};
 
+const Gear gear_list[5] = {gear_0, gear_1, gear_2, gear_3, gear_4};
+
 uint8_t percent_ptio;
 
 volatile Gear current_gear;

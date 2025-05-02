@@ -37,6 +37,8 @@ extern const Gear gear_2;
 extern const Gear gear_3;
 extern const Gear gear_4;
 
+extern const Gear gear_list[5];
+
 extern uint8_t percent_ptio;
 
 extern volatile bool Error;
