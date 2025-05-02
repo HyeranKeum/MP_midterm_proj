@@ -10,6 +10,13 @@ uint32_t Timer_Period = 0x249F00; // 20[ms] Duty Cycle (50[Hz])
 
 volatile Lever_mode current_lever = 0;
 
+void LED_inital() {
+    R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_08, BSP_IO_LEVEL_LOW); // PA08
+    R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_09, BSP_IO_LEVEL_LOW); // PA09
+    R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_10, BSP_IO_LEVEL_LOW); // PA10
+    R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_11_PIN_00, BSP_IO_LEVEL_LOW); // PB00
+}
+
 void lever_P_init(){
     current_lever = P;
     DC_initial(); // (debug)시계반대방향, count stop
