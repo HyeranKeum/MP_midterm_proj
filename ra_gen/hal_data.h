@@ -14,6 +14,16 @@
 #include "r_external_irq_api.h"
 FSP_HEADER
 /** AGT Timer Instance */
+extern const timer_instance_t Switch_timer;
+
+/** Access the AGT instance using these structures when calling API functions directly (::p_api is not used). */
+extern agt_instance_ctrl_t Switch_timer_ctrl;
+extern const timer_cfg_t Switch_timer_cfg;
+
+#ifndef R_AGT1_Interrupt
+void R_AGT1_Interrupt(timer_callback_args_t *p_args);
+#endif
+/** AGT Timer Instance */
 extern const timer_instance_t Error_timer;
 
 /** Access the AGT instance using these structures when calling API functions directly (::p_api is not used). */

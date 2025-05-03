@@ -13,6 +13,7 @@
             [6] = sci_uart_tei_isr, /* SCI0 TEI (Transmit end) */
             [7] = sci_uart_eri_isr, /* SCI0 ERI (Receive error) */
             [8] = agt_int_isr, /* AGT0 INT (AGT interrupt) */
+            [9] = agt_int_isr, /* AGT1 INT (AGT interrupt) */
         };
         const bsp_interrupt_event_t g_interrupt_event_link_select[BSP_ICU_VECTOR_MAX_ENTRIES] =
         {
@@ -25,5 +26,6 @@
             [6] = BSP_PRV_IELS_ENUM(EVENT_SCI0_TEI), /* SCI0 TEI (Transmit end) */
             [7] = BSP_PRV_IELS_ENUM(EVENT_SCI0_ERI), /* SCI0 ERI (Receive error) */
             [8] = BSP_PRV_IELS_ENUM(EVENT_AGT0_INT), /* AGT0 INT (AGT interrupt) */
+            [9] = BSP_PRV_IELS_ENUM(EVENT_AGT1_INT), /* AGT1 INT (AGT interrupt) */
         };
         #endif

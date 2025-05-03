@@ -5,6 +5,37 @@
 #define ADC_TRIGGER_ADC0_B      ADC_TRIGGER_SYNC_ELC
 #define ADC_TRIGGER_ADC1        ADC_TRIGGER_SYNC_ELC
 #define ADC_TRIGGER_ADC1_B      ADC_TRIGGER_SYNC_ELC
+agt_instance_ctrl_t Switch_timer_ctrl;
+const agt_extended_cfg_t Switch_timer_extend =
+{ .count_source = AGT_CLOCK_LOCO,
+  .agto = AGT_PIN_CFG_DISABLED,
+  .agtoa = AGT_PIN_CFG_DISABLED,
+  .agtob = AGT_PIN_CFG_DISABLED,
+  .measurement_mode = AGT_MEASURE_DISABLED,
+  .agtio_filter = AGT_AGTIO_FILTER_NONE,
+  .enable_pin = AGT_ENABLE_PIN_NOT_USED,
+  .trigger_edge = AGT_TRIGGER_EDGE_RISING, };
+const timer_cfg_t Switch_timer_cfg =
+{ .mode = TIMER_MODE_PERIODIC,
+/* Actual period: 0.0999755859375 seconds. Actual duty: 50%. */.period_counts = (uint32_t) 0xccc,
+  .duty_cycle_counts = 0x666, .source_div = (timer_source_div_t) 0, .channel = 1, .p_callback = R_AGT1_Interrupt,
+  /** If NULL then do not add & */
+#if defined(NULL)
+    .p_context           = NULL,
+#else
+  .p_context = &NULL,
+#endif
+  .p_extend = &Switch_timer_extend,
+  .cycle_end_ipl = (12),
+#if defined(VECTOR_NUMBER_AGT1_INT)
+    .cycle_end_irq       = VECTOR_NUMBER_AGT1_INT,
+#else
+  .cycle_end_irq = FSP_INVALID_VECTOR,
+#endif
+        };
+/* Instance structure to use this module. */
+const timer_instance_t Switch_timer =
+{ .p_ctrl = &Switch_timer_ctrl, .p_cfg = &Switch_timer_cfg, .p_api = &g_timer_on_agt };
 agt_instance_ctrl_t Error_timer_ctrl;
 const agt_extended_cfg_t Error_timer_extend =
 { .count_source = AGT_CLOCK_LOCO,
