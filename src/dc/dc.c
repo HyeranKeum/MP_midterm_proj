@@ -35,7 +35,7 @@ void DC_initial(){
 }
 
 void calc_dutyRate() {
-    tmp_dutyRate = (uint8_t)(((float)potentiometer_Ra/10000.0f)*100.f);
+    tmp_dutyRate = TPS;
 
     if (current_mode == Manual) {
         if (tmp_dutyRate < current_gear.duty_low) {

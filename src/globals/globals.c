@@ -22,7 +22,7 @@ const Gear gear_4 = {4, '4' ,80, 100};
 
 const Gear gear_list[5] = {gear_0, gear_1, gear_2, gear_3, gear_4};
 
-uint8_t percent_ptio;
+uint8_t TPS;
 
 volatile Gear current_gear;
 
@@ -97,19 +97,22 @@ void set_gear(){
         current_gear = gear_1;
     }
     else if (current_mode == Auto) {
-        percent_ptio = (uint8_t) (potentiometer_Ra / 100);
 
-        if (percent_ptio < 20) {
+        if (TPS < 20) {
             current_gear = gear_1;
-        } else if (percent_ptio < 50) {
+        } else if (TPS < 50) {
             current_gear = gear_2;
-        } else if (percent_ptio < 80) {
+        } else if (TPS < 80) {
             current_gear = gear_3;
         } else {
             current_gear = gear_4;
         }
     }
     print_data[2] = fnd3[current_gear.gear];
+}
+
+void calc_TPS() {
+    TPS = (uint8_t) (potentiometer_Ra / 100);
 }
 
 void detect_error() {

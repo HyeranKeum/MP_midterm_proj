@@ -32,6 +32,7 @@ void hal_entry(void)
         ADC_Read_and_Convert();
 
         // 기어 변경(수동일 때만 수행)
+        calc_TPS();
         set_gear();
         detect_error();
 

@@ -39,7 +39,7 @@ extern const Gear gear_4;
 
 extern const Gear gear_list[5];
 
-extern uint8_t percent_ptio;
+extern uint8_t TPS;
 
 extern volatile bool Error;
 
@@ -57,6 +57,8 @@ void lever_R_init();
 void mode_init();
 
 void set_gear();
+
+void calc_TPS();
 
 void detect_error();
 
