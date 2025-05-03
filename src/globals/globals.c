@@ -39,7 +39,7 @@ void initial_setting() {
 
     FND_initial();
 
-    AGT0_init();
+    AGT_init();
 }
 
 void LED_inital() {

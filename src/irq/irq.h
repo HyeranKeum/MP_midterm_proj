@@ -3,4 +3,7 @@
 #include "hal_data.h"
 
 void IRQ_Setting();
+
+extern volatile bool SW3_interrupt;
+extern volatile bool SW4_interrupt;
 #endif

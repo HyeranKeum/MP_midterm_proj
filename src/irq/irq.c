@@ -5,7 +5,8 @@
 #include "../fnd/fnd.h"
 #include "irq.h"
 
-// Gear gear_list[5] = {gear_0, gear_1, gear_2, gear_3, gear_4};
+bool volatile SW3_interrupt;
+bool volatile SW4_interrupt;
 
 void IRQ_Setting() {
     R_ICU_ExternalIrqOpen(&g_external_irq11_ctrl, &g_external_irq11_cfg);
@@ -53,17 +54,21 @@ void R_IRQ_Interrupt(external_irq_callback_args_t *p_args)
             break;
         }
         case 13: { // gear up
-            if ((current_mode == Auto) || (current_gear.gear == 4)){
+            if ((current_mode == Auto) || (current_lever == P) || (current_gear.gear == 4)){
                 return;
             }
             current_gear = gear_list[current_gear.gear + 1];
+            R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_10, BSP_IO_LEVEL_LOW); // PA10
+            SW3_interrupt = true;
             break;
         }
         case 14: {
-            if ((current_mode == Auto) || (current_gear.gear == 1)){
+            if ((current_mode == Auto) || (current_lever == P) || (current_gear.gear == 1)){
                 return;
             }
             current_gear = gear_list[current_gear.gear - 1];
+            R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_11_PIN_00, BSP_IO_LEVEL_LOW); // PB00
+            SW4_interrupt = true;
             break;
         }
     }
