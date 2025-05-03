@@ -57,18 +57,24 @@ void R_IRQ_Interrupt(external_irq_callback_args_t *p_args)
             if ((current_mode == Auto) || (current_lever == P) || (current_gear.gear == 4)){
                 return;
             }
-            current_gear = gear_list[current_gear.gear + 1];
-            R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_10, BSP_IO_LEVEL_LOW); // PA10
-            SW3_interrupt = true;
+            if (current_gear.duty_high < TPS){
+                current_gear = gear_list[current_gear.gear + 1];
+
+                R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_10, BSP_IO_LEVEL_LOW); // PA10
+                SW3_interrupt = true;
+            }
             break;
         }
         case 14: {
             if ((current_mode == Auto) || (current_lever == P) || (current_gear.gear == 1)){
                 return;
             }
-            current_gear = gear_list[current_gear.gear - 1];
-            R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_11_PIN_00, BSP_IO_LEVEL_LOW); // PB00
-            SW4_interrupt = true;
+            if (TPS < current_gear.duty_low){
+                current_gear = gear_list[current_gear.gear - 1];
+                
+                R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_11_PIN_00, BSP_IO_LEVEL_LOW); // PB00
+                SW4_interrupt = true;
+            }
             break;
         }
     }
