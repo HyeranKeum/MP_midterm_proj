@@ -93,6 +93,9 @@ void set_gear(){
     if (current_lever == P) {
         current_gear = gear_0;
     }
+    else if ((current_mode == Manual) && (current_gear.gear == gear_0.gear)) {
+        current_gear = gear_1;
+    }
     else if (current_mode == Auto) {
         percent_ptio = (uint8_t) (potentiometer_Ra / 100);
 

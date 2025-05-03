@@ -31,6 +31,18 @@ void servo_initial()
 void calc_degree()
 {
     degree = (uint8_t)(((float)potentiometer_Ra/10000.0f)*180.f);
+
+    if (current_mode == Manual) {
+        uint8_t low = (uint8_t)((float)current_gear.duty_low/100.f * 180.0f);
+        uint8_t high = (uint8_t)((float)current_gear.duty_high/100.f * 180.0f);
+        if (degree < low) {
+            degree = low;
+        }
+        else if (degree > high) {
+            degree = high;
+        }
+    }
+    
 }
 
 void Rotate_Servo()

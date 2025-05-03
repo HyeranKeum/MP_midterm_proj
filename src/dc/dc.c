@@ -36,6 +36,16 @@ void DC_initial(){
 
 void calc_dutyRate() {
     tmp_dutyRate = (uint8_t)(((float)potentiometer_Ra/10000.0f)*100.f);
+
+    if (current_mode == Manual) {
+        if (tmp_dutyRate < current_gear.duty_low) {
+            tmp_dutyRate = current_gear.duty_low;
+        }
+        else if (tmp_dutyRate > current_gear.duty_high) {
+            tmp_dutyRate = current_gear.duty_high;
+        }
+    }
+
     if (current_lever == D){
         dutyRate = 100 - tmp_dutyRate;
         return;
