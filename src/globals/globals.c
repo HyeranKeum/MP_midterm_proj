@@ -29,8 +29,8 @@ volatile bool Error;
 void initial_setting() {
     LED_initial();
     IRQ_Setting();
-    DC_initial(); // 반시계방향 disable
-    servo_initial();
+    DC_initial(); // 시계방향, dutyRate = 100%, disable 초기화
+    servo_initial(); // degree 0 초기화
     ADC_initial();
 
     R_SCI_UART_Open(&g_uart0_ctrl, &g_uart0_cfg);
