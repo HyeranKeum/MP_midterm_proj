@@ -59,10 +59,10 @@ void R_IRQ_Interrupt(external_irq_callback_args_t *p_args)
             }
             if (current_gear.duty_high < TPS){ // 기어 변속 조건 만족 시 
                 current_gear = gear_list[current_gear.gear + 1];
-
-                R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_10, BSP_IO_LEVEL_LOW); // PA10
-                SW3_interrupt = true; // LED 약 1초 후 끄기(agt1) 제어 플래그
             }
+            // 수동일 때 스위치 눌리면 점등
+            R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_10, BSP_IO_LEVEL_LOW); // PA10
+            SW3_interrupt = true; // LED 약 1초 후 끄기(agt1) 제어 플래그
             break;
         }
         case 14: { // gear down(수동일 때만 수행)
@@ -71,10 +71,10 @@ void R_IRQ_Interrupt(external_irq_callback_args_t *p_args)
             }
             if (TPS < current_gear.duty_low){ // 기어 변속 조건 만족 시
                 current_gear = gear_list[current_gear.gear - 1];
-                
-                R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_11_PIN_00, BSP_IO_LEVEL_LOW); // PB00
-                SW4_interrupt = true; // LED 약 1초 후 끄기(agt1) 제어 플래그
             }
+            // 수동일 때 스위치 눌리면 점등
+            R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_11_PIN_00, BSP_IO_LEVEL_LOW); // PB00
+            SW4_interrupt = true; // LED 약 1초 후 끄기(agt1) 제어 플래그
             break;
         }
     }
