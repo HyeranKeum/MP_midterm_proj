@@ -108,6 +108,12 @@ void set_gear(){
 }
 
 void calc_TPS() {
+
+    if (current_lever == P) {
+        TPS = 0;
+        return;
+    }
+    
     TPS = (uint8_t) (potentiometer_Ra / 100);
 }
 

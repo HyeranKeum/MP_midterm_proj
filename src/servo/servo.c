@@ -30,22 +30,15 @@ void servo_initial()
 
 void calc_degree()
 {
-    if (current_lever == P) {
-        degree = 0;
-        return;
+    degree = (uint8_t)((TPS/100.0f)*180.f);
+
+    uint8_t low = (uint8_t)((float)current_gear.duty_low/100.f * 180.0f);
+    uint8_t high = (uint8_t)((float)current_gear.duty_high/100.f * 180.0f);
+    if (degree < low) {
+        degree = low;
     }
-
-    degree = (uint8_t)(((float)potentiometer_Ra/10000.0f)*180.f);
-
-    if (current_mode == Manual) { // 수동 모드에서 기어 따라 상하한 제한
-        uint8_t low = (uint8_t)((float)current_gear.duty_low/100.f * 180.0f);
-        uint8_t high = (uint8_t)((float)current_gear.duty_high/100.f * 180.0f);
-        if (degree < low) {
-            degree = low;
-        }
-        else if (degree > high) {
-            degree = high;
-        }
+    else if (degree > high) {
+        degree = high;
     }
     
 }
