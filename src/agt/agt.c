@@ -11,6 +11,8 @@ const char char_table_mode[2] = { 'A', 'M' };
 volatile int SW3_interrupt_count = 0;
 volatile int SW4_interrupt_count = 0;
 
+void handle_interrupt();
+
 void AGT_init() {
     R_AGT_Open(&Error_timer_ctrl, &Error_timer_cfg); // AGT0(1s)
     R_AGT_Start(&Error_timer_ctrl);
@@ -38,6 +40,14 @@ void R_AGT0_Interrupt(timer_callback_args_t *p_args) {// AGT0(1s)
 void R_AGT1_Interrupt(timer_callback_args_t *p_args) {// AGT1(100ms)
 
     FSP_PARAMETER_NOT_USED(p_args);
+
+    if (SW3_interrupt || SW4_interrupt) {
+        handle_interrupt();
+    }
+
+}
+
+void handle_interrupt() {
     // 스위치 3, 4 눌린 후 LED 1초 후 끄기
     if (SW3_interrupt) {
         SW3_interrupt_count += 1;
@@ -55,6 +65,6 @@ void R_AGT1_Interrupt(timer_callback_args_t *p_args) {// AGT1(100ms)
             SW4_interrupt_count = 0;
             R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_11_PIN_00, BSP_IO_LEVEL_HIGH); // PB00
         }
-
     }
+
 }
