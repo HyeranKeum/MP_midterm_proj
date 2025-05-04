@@ -60,7 +60,7 @@ void R_IRQ_Interrupt(external_irq_callback_args_t *p_args)
                 current_gear = gear_list[current_gear.gear + 1];
 
                 R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_10, BSP_IO_LEVEL_LOW); // PA10
-                SW3_interrupt = true; // LED 1초 점등(agt1) 제어 플래그
+                SW3_interrupt = true; // LED 약 1초 후 끄기(agt1) 제어 플래그
             }
             break;
         }
@@ -72,7 +72,7 @@ void R_IRQ_Interrupt(external_irq_callback_args_t *p_args)
                 current_gear = gear_list[current_gear.gear - 1];
                 
                 R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_11_PIN_00, BSP_IO_LEVEL_LOW); // PB00
-                SW4_interrupt = true; // LED 1초 점등(agt1) 제어 플래그
+                SW4_interrupt = true; // LED 약 1초 후 끄기(agt1) 제어 플래그
             }
             break;
         }

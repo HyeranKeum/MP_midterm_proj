@@ -3,8 +3,8 @@
 
 #include "hal_data.h"
 
-extern const char lever_char_table[4];
-extern const char mode_char_table[2];
+extern const char char_table_lever[4]; // 삭제 예정 ? 
+extern const char char_table_mode[2];
 extern char message[5];
 
 void AGT_init();
