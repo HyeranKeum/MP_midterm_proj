@@ -15,9 +15,7 @@
 extern uint8_t number[10];
 extern uint8_t print_data[4];
 
-extern int f1, f2, f3, f4;
-
-extern uint8_t fnd1[4];
+extern uint8_t fnd1[4]; // 삭제 예정?
 
 extern uint8_t fnd2[2];
 
