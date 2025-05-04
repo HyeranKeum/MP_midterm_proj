@@ -1,13 +1,11 @@
 #include "hal_data.h"
 #include "globals.h"
 #include "dc/dc.h"
+#include "servo/servo.h"
 #include "irq/irq.h"
 #include "fnd/fnd.h"
 #include "adc/adc.h"
-#include "servo/servo.h"
-
-volatile uint32_t Toggle   = 0;
-volatile uint32_t count = 0;
+#include "agt/agt.h"
 
 uint32_t Timer_Period = 0x249F00; // 20[ms] Duty Cycle (50[Hz])
 
@@ -29,7 +27,7 @@ volatile Gear current_gear;
 volatile bool Error; 
 
 void initial_setting() {
-    LED_inital();
+    LED_initial();
     IRQ_Setting();
     DC_initial(); // 반시계방향 disable
     servo_initial();
@@ -42,7 +40,7 @@ void initial_setting() {
     AGT_init();
 }
 
-void LED_inital() {
+void LED_initial() {
     R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_08, BSP_IO_LEVEL_HIGH); // PA08
     R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_09, BSP_IO_LEVEL_HIGH); // PA09
     R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_10, BSP_IO_LEVEL_HIGH); // PA10

@@ -5,10 +5,6 @@
 
 extern uint32_t Timer_Period;
 
-extern volatile uint32_t Toggle;
-
-extern volatile uint32_t count;
-
 typedef enum {
     P = 0,
     N = 1,
@@ -31,13 +27,13 @@ typedef struct {
 } Gear;
 extern volatile Gear current_gear;
 
-extern const Gear gear_0; // 모드P일 때
+extern const Gear gear_0; // 레버 P 일 때
 extern const Gear gear_1;
 extern const Gear gear_2;
 extern const Gear gear_3;
 extern const Gear gear_4;
 
-extern const Gear gear_list[5];
+extern const Gear gear_list[5]; // 수동 모드: SW3,4 변속 시 사용
 
 extern uint8_t TPS;
 
@@ -45,7 +41,7 @@ extern volatile bool Error;
 
 void initial_setting();
 
-void LED_inital();
+void LED_initial();
 
 void system_on();
 
