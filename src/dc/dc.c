@@ -35,9 +35,9 @@ void DC_initial(){
 }
 
 void calc_dutyRate() {
-    tmp_dutyRate = TPS;
-
-    if (current_mode == Manual) {
+    tmp_dutyRate = TPS; // calc_TPS()에서 TPS 업데이트
+    // 자동 모드에서는 TPS 그대로 DC 제어
+    if (current_mode == Manual) { // 수동 모드에서는 기어 따라 DC 상하한 제한
         if (tmp_dutyRate < current_gear.duty_low) {
             tmp_dutyRate = current_gear.duty_low;
         }
@@ -46,7 +46,7 @@ void calc_dutyRate() {
         }
     }
 
-    if (current_lever == D){
+    if (current_lever == D){ // DC 시계 방향에서 dutyRate(%) 반대로 작동
         dutyRate = 100 - tmp_dutyRate;
         return;
     }

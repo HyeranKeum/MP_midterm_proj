@@ -2,10 +2,7 @@
 #include "../globals/globals.h"
 #include "fnd.h"
 
-uint8_t number[10] = {0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xD8, 0x80, 0x90};
 uint8_t print_data[4] = {0xC0, 0xC0, 0xC0, 0xC0};
-
-int f1 = 0, f2 = 0, f3 = 0, f4 = 0;
 
 uint8_t fnd1[4] = {
     0x8C,  // P
@@ -31,6 +28,7 @@ uint8_t fnd4[2] = {
     0xFF,  // (표시 없음)
     0x86   // E
 };
+
 void FND_initial() {
     print_data[0] = fnd1[0];
     print_data[1] = fnd2[0];
@@ -41,7 +39,6 @@ void FND_initial() {
 
 void R_FND_Reset()
 {
-    /* 7-Segment LED Pin State Initialization */
     R_PORT3->PCNTR1_b.PODR &= ~PODR_DIGIT_MASK & 0xFFFF;
     R_PORT6->PCNTR1_b.PODR |= PODR_PIN_MASK;
 }
@@ -61,19 +58,16 @@ void R_FND_Print_Data(uint8_t *string)
 void R_FND_Display_Data(uint8_t digit, uint8_t data)
 {
 
-    // uint16_t key = 0; idx = 0;
-
     R_BSP_SoftwareDelay(10, BSP_DELAY_UNITS_MICROSECONDS);
     R_FND_Reset();
 
     R_PORT3->PCNTR1_b.PODR = 1U << (digit + 5U);
 
-    /* 7-Segment LED Pin State Setting */
     R_PORT6->PCNTR1_b.PODR = (uint16_t)(((data & 0xf0) << 7U) | ((data & 0x0f) << 4U));
 
 }
 
-void fnd_print_state(){
+void fnd_print_state(){ // 현재 상태 fnd 출력
     print_data[0] = fnd1[current_lever];
     print_data[1] = fnd2[current_mode];
     print_data[2] = fnd3[current_gear.gear];

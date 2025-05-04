@@ -9,32 +9,21 @@
 #include "agt/agt.h"
 #include "bsp_warmstart/bsp.h"
 
-int cnt = 0;
-int Cnt = 65;
 
-uint16_t p_RA;
-uint16_t cds_sensor;
 void hal_entry(void)
 {
     initial_setting();
 
-    system_on();
+    system_on(); // P, auto로 초기화
 
     while(1) {
-        cnt += 1;
-        if (cnt == 0xffff){
-            cnt = 0;
-            Cnt += 1;
-            if (Cnt == 98) {
-                Cnt = 65;
-            }
-        }
+
         ADC_Read_and_Convert();
 
-        // 기어 변경(수동일 때만 수행)
-        calc_TPS();
-        set_gear();
-        detect_error();
+        calc_TPS(); // TPS 업데이트
+
+        set_gear(); // 기어 변경
+        detect_error(); // 조도 센서 값따라 Error 업데이트
 
         calc_degree();
         Rotate_Servo();
