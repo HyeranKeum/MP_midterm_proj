@@ -54,10 +54,10 @@ void R_IRQ_Interrupt(external_irq_callback_args_t *p_args)
             break;
         }
         case 13: { // gear up(수동일 때만 수행)
-            if ((current_mode == Auto) || (current_lever == P) || (current_gear.gear == 4)){
+            if ((current_mode == Auto) || (current_lever == P)){
                 return;
             }
-            if (current_gear.duty_high < TPS){ // 기어 변속 조건 만족 시 
+            if (!(current_gear.gear == 4) && current_gear.duty_high < TPS){ // 기어 변속 조건 만족 시 
                 current_gear = gear_list[current_gear.gear + 1];
             }
             // 수동일 때 스위치 눌리면 점등
@@ -66,10 +66,10 @@ void R_IRQ_Interrupt(external_irq_callback_args_t *p_args)
             break;
         }
         case 14: { // gear down(수동일 때만 수행)
-            if ((current_mode == Auto) || (current_lever == P) || (current_gear.gear == 1)){
+            if ((current_mode == Auto) || (current_lever == P)){
                 return;
             }
-            if (TPS < current_gear.duty_low){ // 기어 변속 조건 만족 시
+            if (!(current_gear.gear == 1) && TPS < current_gear.duty_low){ // 기어 변속 조건 만족 시
                 current_gear = gear_list[current_gear.gear - 1];
             }
             // 수동일 때 스위치 눌리면 점등
