@@ -9,7 +9,6 @@ extern uint8_t L293_CH0_Direction_Level;
 extern volatile uint32_t dutyRate;
 
 void DC_initial();
-void calc_dutyRate();
-void Rotate_DC();
+void set_dc();
 
 #endif

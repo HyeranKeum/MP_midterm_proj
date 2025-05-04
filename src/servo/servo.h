@@ -6,7 +6,5 @@
 extern uint8_t degree;
 
 void servo_initial();
-void Rotate_Servo();
-void calc_degree();
 void set_servo();
 #endif 

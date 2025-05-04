@@ -11,6 +11,9 @@ uint8_t L293_CH0_Direction_Level;
 volatile uint32_t dutyRate = 0;
 uint32_t tmp_dutyRate = 0;
 
+void calc_dutyRate();
+void Rotate_DC();
+
 void DC_initial(){
     R_MSTP->MSTPCRD_b.MSTPD5 = 0U; // GPT32EH3 Module Stop State Cancel
 
@@ -36,7 +39,7 @@ void DC_initial(){
 
 void calc_dutyRate() {
     tmp_dutyRate = TPS; // calc_TPS()에서 TPS 업데이트
-    // 자동 모드에서는 TPS 그대로 DC 제어
+    // 현재 기어 따라 dc 상하한 제한
     if (tmp_dutyRate < current_gear.duty_low) {
         tmp_dutyRate = current_gear.duty_low;
     }
@@ -56,3 +59,9 @@ void Rotate_DC()
 {
     R_GPT3->GTCCR[0] = Timer_Period * dutyRate / 100;
 }
+
+void set_dc()
+ {
+    calc_dutyRate();
+    Rotate_DC();
+ }

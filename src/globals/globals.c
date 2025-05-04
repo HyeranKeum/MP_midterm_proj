@@ -85,15 +85,25 @@ void mode_init(){ // auto(current_mode = 0) <-> manual(current_mode = 1) 전환
     R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_09, current_mode); // PA09 수동에서 LED 점등
 }
 
+void calc_TPS() {
+
+    if (current_lever == P) {
+        TPS = 0;
+        return;
+    }
+    
+    TPS = (uint8_t) (potentiometer_Ra / 100);
+}
+
 void set_gear(){
 
     if (current_lever == P) {
         current_gear = gear_0;
     }
     else if ((current_mode == Manual) && (current_gear.gear == gear_0.gear)) {
-        current_gear = gear_1; // 수동에서 P -> N 경우 기어 1 설정
+        current_gear = gear_1; // 수동모드 P -> N 경우 기어 1 설정
     }
-    else if (current_mode == Auto) { // 자동에서 TPS 따라 자동 기어 변속
+    else if (current_mode == Auto) { // 자동모드 TPS 따라 자동 기어 변속
 
         if (TPS < 20) {
             current_gear = gear_1;
@@ -105,16 +115,6 @@ void set_gear(){
             current_gear = gear_4;
         }
     }
-}
-
-void calc_TPS() {
-
-    if (current_lever == P) {
-        TPS = 0;
-        return;
-    }
-    
-    TPS = (uint8_t) (potentiometer_Ra / 100);
 }
 
 void detect_error() {

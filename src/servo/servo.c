@@ -10,6 +10,9 @@ const double SERVO_EACH_DEGREE = (SERVO_MAXIMUM_DUTY - SERVO_MINIMUM_DUTY) / 180
 double temp_calc = 0.0;
 uint8_t degree = 0;
 
+void calc_degree();
+void Rotate_Servo();
+
 void servo_initial()
 {
     R_MSTP->MSTPCRD_b.MSTPD5 = 0U; // GPT32EH0 Module Stop State Cancel
@@ -31,7 +34,7 @@ void servo_initial()
 void calc_degree()
 {
     degree = (uint8_t)((TPS/100.0f)*180.f);
-
+    // 현재 기어 따라 서보모터 상하한 제한
     uint8_t low = (uint8_t)((float)current_gear.duty_low/100.f * 180.0f);
     uint8_t high = (uint8_t)((float)current_gear.duty_high/100.f * 180.0f);
     if (degree < low) {

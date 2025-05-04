@@ -27,8 +27,7 @@ void hal_entry(void)
 
         set_servo();
 
-        calc_dutyRate();
-        Rotate_DC();
+        set_dc();
 
         fnd_print_state();
     }
