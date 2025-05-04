@@ -24,9 +24,8 @@ void hal_entry(void)
 
         set_gear(); // 기어 변경
         detect_error(); // 조도 센서 값따라 Error 업데이트
-
-        calc_degree();
-        Rotate_Servo();
+        
+        set_servo();
 
         calc_dutyRate();
         Rotate_DC();

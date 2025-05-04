@@ -55,13 +55,12 @@ void system_on(){
 
 void lever_P_init(){
     current_lever = P;
-    DC_initial(); // 시계방향, dutyRate = 100%, disable 초기화
+    DC_initial(); // 시계방향, dutyRate = 100%, 초기화
     servo_initial(); // degree 0, disable 초기화
 }
 
 void lever_N_init(){
     current_lever = N;
-    R_GPT0->GTCR_b.CST = 1U; // Servo Start
 }
 
 void lever_D_init(){

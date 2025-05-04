@@ -25,11 +25,16 @@ void servo_initial()
 
     R_GPT0->GTCCR[0] = (uint32_t)(Timer_Period * SERVO_MINIMUM_DUTY); // GTCCR Initial Setting (Angle = 0[degree])
 
-    R_GPT0->GTCR_b.CST = 0U; // GPT32EH0 Count Start
+    R_GPT0->GTCR_b.CST = 1U; // GPT32EH0 Count Stop
 }
 
 void calc_degree()
 {
+    if (current_lever == P) {
+        degree = 0;
+        return;
+    }
+
     degree = (uint8_t)(((float)potentiometer_Ra/10000.0f)*180.f);
 
     if (current_mode == Manual) { // 수동 모드에서 기어 따라 상하한 제한
@@ -50,4 +55,10 @@ void Rotate_Servo()
     temp_calc = (SERVO_MINIMUM_DUTY + SERVO_EACH_DEGREE * (float)degree);
 
     R_GPT0->GTCCR[0] = (uint32_t)(Timer_Period * temp_calc);
+}
+
+
+void set_servo(){
+    calc_degree();
+    Rotate_Servo();
 }
