@@ -83,7 +83,6 @@ void lever_R_init(){
 }
 
 void mode_init(){ // auto(current_mode = 0) <-> manual(current_mode = 1) 전환
-    current_mode ^= 0x01; // 모드 토글
     R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_09, current_mode); // PA09 수동에서 LED 점등
 }
 

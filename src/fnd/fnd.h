@@ -12,10 +12,9 @@
 #define PODR_LOW_MASK         0x00F0
 #define PODR_PIN_MASK         PODR_HIGH_MASK | PODR_LOW_MASK
 
-extern uint8_t number[10];
 extern uint8_t print_data[4];
 
-extern uint8_t fnd1[4]; // 삭제 예정?
+extern uint8_t fnd1[4];
 
 extern uint8_t fnd2[2];
 

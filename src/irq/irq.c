@@ -49,6 +49,7 @@ void R_IRQ_Interrupt(external_irq_callback_args_t *p_args)
             break;
         }
         case 12: { // 자동, 수동 모드, LED 토글 스위치
+            current_mode ^= 0x01; // 모드 토글z
             mode_init();
             break;
         }
