@@ -82,7 +82,8 @@ void lever_R_init(){
     R_IOPORT_PinWrite(&g_ioport_ctrl, L293_CH0_Direction, L293_CH0_Direction_Level);
 }
 
-void mode_init(){ // auto(current_mode = 0) <-> manual(current_mode = 1) 토글
+void mode_init(){ // auto(current_mode = 0) <-> manual(current_mode = 1) 전환
+    current_mode ^= 0x01; // 모드 토글
     R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_10_PIN_09, current_mode); // PA09
 }
 

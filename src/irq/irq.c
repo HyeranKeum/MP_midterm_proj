@@ -49,7 +49,6 @@ void R_IRQ_Interrupt(external_irq_callback_args_t *p_args)
             break;
         }
         case 12: {
-            current_mode ^= 0x01; // 모드 토글
             mode_init();
             break;
         }
