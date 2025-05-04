@@ -13,7 +13,8 @@ volatile int SW4_interrupt_count = 0;
 
 void AGT_init() {
     R_AGT_Open(&Error_timer_ctrl, &Error_timer_cfg);
-    R_AGT_Enable(&Error_timer_ctrl);
+    R_AGT_Start(&Error_timer_ctrl);
+
     
     R_AGT_Open(&Switch_timer_ctrl, &Switch_timer_cfg);
     R_AGT_Start(&Switch_timer_ctrl);

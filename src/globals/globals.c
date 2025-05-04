@@ -108,7 +108,6 @@ void set_gear(){
             current_gear = gear_4;
         }
     }
-    print_data[2] = fnd3[current_gear.gear];
 }
 
 void calc_TPS() {
