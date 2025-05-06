@@ -22,8 +22,8 @@ extern volatile Mode current_mode;
 typedef struct {
     uint8_t gear; // 기어 단계
     char display_char; // UART 출력 문자
-    uint8_t duty_low; // TPS 하한값(%)
-    uint8_t duty_high; // TPS 상한값(%)
+    uint8_t TPS_low; // TPS 하한값(%)
+    uint8_t TPS_high; // TPS 상한값(%)
 } Gear;
 extern volatile Gear current_gear;
 
@@ -37,7 +37,7 @@ extern const Gear gear_list[5]; // 수동 모드: SW3,4 변속 시 사용
 
 extern uint8_t TPS;
 
-extern volatile bool Error;
+extern bool Error;
 
 void initial_setting();
 
