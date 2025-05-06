@@ -30,6 +30,8 @@ void hal_entry(void)
         set_dc();
 
         fnd_print_state();
+
+        AGT_ISR();
     }
 
 
