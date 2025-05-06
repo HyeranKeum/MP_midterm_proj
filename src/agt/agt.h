@@ -4,6 +4,5 @@
 #include "hal_data.h"
 
 void AGT_init();
-void R_AGT0_Interrupt(timer_callback_args_t *p_args);
-
+void AGT_ISR();
 #endif

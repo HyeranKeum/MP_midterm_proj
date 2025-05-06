@@ -24,7 +24,7 @@ uint8_t TPS;
 
 volatile Gear current_gear;
 
-volatile bool Error; 
+bool Error; 
 
 void initial_setting() {
     LED_initial();
@@ -86,12 +86,6 @@ void mode_init(){ // auto(current_mode = 0) <-> manual(current_mode = 1) 전환
 }
 
 void calc_TPS() {
-
-    if (current_lever == P) {
-        TPS = 0;
-        return;
-    }
-    
     TPS = (uint8_t) (potentiometer_Ra / 100);
 }
 

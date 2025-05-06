@@ -40,11 +40,11 @@ void DC_initial(){
 void calc_dutyRate() {
     tmp_dutyRate = TPS; // calc_TPS()에서 TPS 업데이트
     // 현재 기어 따라 dc 상하한 제한
-    if (tmp_dutyRate < current_gear.duty_low) {
-        tmp_dutyRate = current_gear.duty_low;
+    if (tmp_dutyRate < current_gear.TPS_low) {
+        tmp_dutyRate = current_gear.TPS_low;
     }
-    else if (tmp_dutyRate > current_gear.duty_high) {
-        tmp_dutyRate = current_gear.duty_high;
+    else if (tmp_dutyRate > current_gear.TPS_high) {
+        tmp_dutyRate = current_gear.TPS_high;
     }
 
     if (current_lever == D){ // DC 시계 방향에서 dutyRate(%) 반대로 작동
